@@ -1,4 +1,4 @@
-# Team Name
+# Dream Team
 
 By April 2021, the Dream Team will have created a functioning Checkers game that two players can use with Unity. The team will have weekly meetings or checkups to ensure that they are on track with the project, responsibilities, and deadlines. Using Unity, the dream team will break the project into checkpoints for which each member will have responsibility. 
 
