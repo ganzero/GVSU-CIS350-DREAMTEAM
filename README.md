@@ -4,7 +4,7 @@ By April 2021, the Dream Team will have created a functioning Checkers game that
 
 ## Team Members and Roles
 
-* Owen Ganzer (Role 1, Role 2)
+* [Owen Ganzer](https://github.com/ganzero/CIS350-HW2-Ganzer) (Role 1, Role 2)
 * [Sarah Rockow](https://github.com/srockow2000/CIS350-HW2-Rockow.git)   (Role 3, Role 4)
 * Member 3 (Role 5, Role 6)
 
