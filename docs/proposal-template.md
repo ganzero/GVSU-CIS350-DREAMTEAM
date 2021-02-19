@@ -29,7 +29,14 @@ The team will initially use the Prototyping method to create the Checkers projec
 
 # Estimated Timeline
 
-![timeline picture](https://ibb.co/GxcgmhH)
+Project Milestones
+* Create board/familiarization with Unity (2 weeks)
+* Create pieces (2 weeks)
+* Define rules/logic (2 weeks)
+* Test project (2 weeks) 
+* Present project
+
+![timeline picture](https://i.ibb.co/ZLWy9Z2/Screen-Shot-2021-02-19-at-12-38-45-PM.png)
 
 # Anticipated Problems
 
