@@ -17,6 +17,8 @@ The checkers game will have the following features:
 1. An 8x8 board with alternating colors or lines
 2. 24 identical checkers 2 main colors
 
+As a 5-person team, creating a functioning game of checkers should be achievable. To share the work equally, each member will rotate the roles or responsibilities. If a team member is unable to complete a task before a deadline, the rest of the team will be informed so that another team member can complete the task if it is time sensitive.
+
 # Anticipated Technologies
 
 The team will use Unity to create the game.
