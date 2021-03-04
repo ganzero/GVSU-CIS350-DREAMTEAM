@@ -10,7 +10,7 @@ Members present:
 
 Date: March 4, 2021
 
-Time: 10:00am - 
+Time: 10:00am - 10:15am
 
 Discussion points: 
 
