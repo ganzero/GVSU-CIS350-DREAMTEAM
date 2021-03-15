@@ -6,17 +6,35 @@ your SRS>
 # Functional Requirements
 
 1. Piece Requirements
-	1.  Upon user request, a regular piece shall move one square in any forward-diagonal direction per
-turn, or jump.
-	2.  Upon user request, a king piece shall move one square in any diagonal direction per turn, or jump.
-	3.  Upon user request, a regular piece with an opponent’s piece forward-diagonally adjacent shall
-jump to the opposite side of the opponent if that square is open.
-	4.  Players shall be able to move only piece per round.
+	1. The system shall allow game pieces and board squares will have color codes #000000 for Black and #FF0000 for Red.
+	2. There shall be 12 white, round checker pieces and 12 red, round checker pieces with identical designs that will not overlap the parameters of the squares in the grid.
+
+2. Board Requirements
+	1. The checkerboard shall be 2D and the checker pieces shall be 3D.
+	2. The checkers board shall be composed of a standard 8x8 grid made of squares with the alternating colors of black and white.
+
+3. Mechanics
+	1. The System shall allow a player to restart a game.
+
+4. Movements
+	1. The system shall allow game pieces to jump diagonally over enemy pieces.
+	2. The pieces shall only be allowed to move forward diagonally one square until they reach a square on the opposite side of the board relative to their initial starting point.
+	3. Upon user request, a king piece shall move one square in any diagonal direction per turn, or jump.
+
 
 # Non-Functional Requirements
+1. Game Play
+	1. The System shall allow each player to only interact with their own pieces.
+	2. When a user selects any of their pieces it should be easy for them to move it to their desired square, also allow the user to select a different piece easily if they want to move another piece.
+	3. Checker pieces shall be removed once the piece has been jumped by the opponent.
+	4. Players shall be allowed to choose whether to capture an opponent’s piece or ignore it.
+	5. If each player or team only has one piece left, the winner shall be the first player to crown their piece.
 
-1. Game Design
- 1.   The checker pieces of one side will be black and the other side will be white.
+2. System Reaction
+	1. Once a player makes a move, the other play shall be able to immediately (within 10ms) make a move.
 
-2. Game Rules
- 1. The game ends when a player cannot make a move.
+3. System Actions
+	1. The game shall have a load and save option for one or more games.
+	2. The checkerboard application shall load on both mobile and desktop versions.
+	3. The game ends when a player cannot make a move.
+
