@@ -1,7 +1,6 @@
 # Overview
 
-<Describe the purpose of this document in 1 paragraph of less … hint: it is
-your SRS>
+This document illustrates the Functional and Non-Functional Requirements of our Unity Checkers Game. These requirements are divided into sub categories specific to certain parts of the game, such as pieces, board, movement, and actions performed by the game. Under each category it goes in detail of what we plan to implement and what needs to be implemented for the game to operate.
 
 # Functional Requirements
 
