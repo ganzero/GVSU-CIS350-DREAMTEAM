@@ -7,6 +7,8 @@ This document illustrates the Functional and Non-Functional Requirements of our 
 1. Piece Requirements
 	1. The system shall allow game pieces and board squares will have color codes #000000 for Black and #FF0000 for Red.
 	2. There shall be 12 white, round checker pieces and 12 red, round checker pieces with identical designs that will not overlap the parameters of the squares in the grid.
+	3. The game piece that the user selects shall be highlighted to show the user their currently selected piece.
+	4. Once a player’s piece has reached the opposite side of the board, that piece shall be “kinged” and display a crown to let the player know that the piece is now a king.
 
 2. Board Requirements
 	1. The checkerboard shall be 2D and the checker pieces shall be 3D.
@@ -31,9 +33,13 @@ This document illustrates the Functional and Non-Functional Requirements of our 
 
 2. System Reaction
 	1. Once a player makes a move, the other play shall be able to immediately (within 10ms) make a move.
+	2. The game application shall not crash nor shall it crash the device it is installed to when opened by the user.
 
 3. System Actions
 	1. The game shall have a load and save option for one or more games.
 	2. The checkerboard application shall load on both mobile and desktop versions.
-	3. The game ends when a player cannot make a move.
+	3. The game shall be available for both Apple and Android mobile devices.
+	4. The game ends when a player cannot make a move.
 
+4. Maintenance
+	1. The source code of the checkers game shall be well organized and well commented so that it will be easy for our team members to perform maintenance and updates on the existing code.
