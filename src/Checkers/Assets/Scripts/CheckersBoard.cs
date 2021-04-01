@@ -12,6 +12,8 @@ public class CheckersBoard : MonoBehaviour
     public Vector3 boardOffset = new Vector3(-4.0f, 0, -4.0f);
     public Vector3 pieceOffset = new Vector3(0.5f, 0, 0.5f);
 
+    private bool isWhite;
+    private bool isWhiteTurn;
     private Piece selectedPiece;
 
     public Vector2 mouseOver;
@@ -126,13 +128,40 @@ private void SelectPiece(int x, int y)
                     if (p != null)
                     {
                         pieces[(x1 + x2) / 2, (y1 + y2) / 2] = null;
-                        //Capture
+                        Capture(p);
                     }
                 }
+
+                pieces[x2, y2] = selectedPiece;
+                pieces[x1, y1] = null;
+                MovePiece(selectedPiece, x2, y2);
+
+                EndTurn();
             }
         }
+
         MovePiece(selectedPiece, x2, y2);
     }
+
+    private void Capture(Piece p)
+    {
+        
+    }
+
+    private void EndTurn()
+    {
+        selectedPiece = null;
+        startDrag = Vector2.zero;
+        isWhiteTurn = !isWhiteTurn;
+        VictoryCheck();
+    }
+
+    private void VictoryCheck()
+    {
+         
+    }
+
+    
 
     private void GenerateBoard()
     {

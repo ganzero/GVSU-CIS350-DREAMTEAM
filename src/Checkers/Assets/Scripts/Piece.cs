@@ -14,7 +14,7 @@ public class Piece : MonoBehaviour
          return false;
 
       int moveX = Mathf.Abs(x1 - x2);
-      int moveY = y1 - y2;
+      int moveY = y2 - y1;
       // Normal Move
       if (isWhite || isKing)
       {
