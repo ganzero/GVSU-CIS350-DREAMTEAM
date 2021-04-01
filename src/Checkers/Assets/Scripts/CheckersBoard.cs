@@ -97,11 +97,39 @@ private void SelectPiece(int x, int y)
         startDrag = new Vector2(x1, y1);
         endDrag = new Vector2(x2, y2);
         selectedPiece = pieces[x1, y1];
+        //Out of Bounds
         if (x2 < 0 || x2 >= pieces.Length || y2 < 0 || y2 >= pieces.Length)
         {
+            if (selectedPiece != null)
+                MovePiece(selectedPiece, x1, y1);
+            
             startDrag = Vector2.zero;
             selectedPiece = null;
             return;
+        }
+
+        if (selectedPiece != null)
+        {
+            if (endDrag == startDrag)
+            {
+                MovePiece(selectedPiece, x1, y1);
+               startDrag = Vector2.zero;
+               selectedPiece = null;
+               return;
+            }
+
+            if (selectedPiece.ValidMove(pieces, x1, y1, x2, y2))
+            {
+                if (Mathf.Abs(x2 - x2) == 2)
+                {
+                    Piece p = pieces[(x1 + x2) / 2, (y1 + y2) / 2];
+                    if (p != null)
+                    {
+                        pieces[(x1 + x2) / 2, (y1 + y2) / 2] = null;
+                        //Capture
+                    }
+                }
+            }
         }
         MovePiece(selectedPiece, x2, y2);
     }
