@@ -7,7 +7,7 @@ Dream Team
 * Alexander Fang
 * Owen Ganzer
 * Sarah Rockow
-* Jack VanBronkhorst
+* Jake VanBronkhorst
 
 # Date: April 3, 2021
 
