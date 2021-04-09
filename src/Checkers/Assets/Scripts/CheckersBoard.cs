@@ -122,7 +122,7 @@ private void SelectPiece(int x, int y)
 
             if (selectedPiece.ValidMove(pieces, x1, y1, x2, y2))
             {
-                if (Mathf.Abs(x2 - x2) == 2)
+                if (Mathf.Abs(x2 - x1) == 2)
                 {
                     Piece p = pieces[(x1 + x2) / 2, (y1 + y2) / 2];
                     if (p != null)
@@ -145,7 +145,7 @@ private void SelectPiece(int x, int y)
 
     private void Capture(Piece p)
     {
-        
+        Destroy(p.gameObject);
     }
 
     private void EndTurn()
