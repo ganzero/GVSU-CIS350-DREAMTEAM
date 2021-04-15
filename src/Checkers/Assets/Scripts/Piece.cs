@@ -7,26 +7,18 @@ public class Piece : MonoBehaviour
     public bool isWhite;
     //public bool isKing;
 
-    public bool isKing(Piece[,] board, int x1, int y1, int x2, int y2)
+    public bool isKing(int x1, int y1)
     {
-        if (isWhite) {
+        if (isWhite && ((x1 <= 8) && (y1 == 7)) )
             //board has to be empty and white piece has to be at other end
-            if ( (board[x2, y2] == null) && ( (x2 <= 8) && (y2 == 7) ) )
-                return true;
-        }
-
+            return true;
         return false;
-        
 
-        if (!isWhite)
-        {
+
+        if (isWhite && ((x1 <= 8) && (y1 == 0)))
             //place has to be empty and black piece has to be at other end
-            if ((board[x2, y2] == null) && ((x2 <= 8) && (y2 == 0)))
-                return true;
-        }
-
+            return true;
         return false;
-        
     }
 
     public bool ValidMove(Piece[,] board, int x1, int y1, int x2, int y2)
@@ -38,7 +30,7 @@ public class Piece : MonoBehaviour
         int moveX = Mathf.Abs(x1 - x2);
         int moveY = y2 - y1;
         // Normal Move
-        if (isWhite || isKing(board[x2, y2], x1, y1, x2, y2))
+        if (isWhite || isKing(x2, y2))
         {
             if (moveX == 1)
             {
@@ -59,7 +51,7 @@ public class Piece : MonoBehaviour
         }
 
         // Black checks different on Y axis
-        if (!isWhite || isKing(board[x2, y2], x1, y1, x2, y2))
+        if (!isWhite || isKing(x2, y2))
         {
             if (moveX == 1)
             {
