@@ -100,18 +100,14 @@ public class CheckersBoard : MonoBehaviour
     private void endTurn()
     {
         //default starts with whiteTurn being true
-
-
         if (whiteTurn)
         {
             whiteTurn = false;
-            return;
         }
 
-        if (!whiteTurn)
+        else if (!whiteTurn)
         {
             whiteTurn = true;
-            return;
         }
     }
 
@@ -136,17 +132,16 @@ public class CheckersBoard : MonoBehaviour
 
         if (selectedPiece != null)
         {
-            if ((isWhite && whiteTurn) || (!isWhite && !whiteTurn))
+            if (endDrag == startDrag)
             {
-                if (endDrag == startDrag)
-                {
-                    MovePiece(selectedPiece, x1, y1);
-                    startDrag = Vector2.zero;
-                    selectedPiece = null;
-                    return;
-                }
-
-                if (selectedPiece.ValidMove(pieces, x1, y1, x2, y2))
+                MovePiece(selectedPiece, x1, y1);
+                startDrag = Vector2.zero;
+                selectedPiece = null;
+                return;
+            }
+            
+            if (selectedPiece.ValidMove(pieces, x1, y1, x2, y2))
+                {if ((isWhite && whiteTurn) || (!isWhite && !whiteTurn)) 
                 {
                     if (Mathf.Abs(x2 - x1) == 2)
                     {
@@ -166,21 +161,13 @@ public class CheckersBoard : MonoBehaviour
 
                     if (selectedPiece.checkKing(x2, y2))
                         selectedPiece.transform.Rotate(Vector3.right * 180);
-
-
-                    VictoryCheck();
-                    checkMessage();
                 }
             }
         }
+        VictoryCheck();
         MovePiece(selectedPiece, x2, y2);
-
     }
 
-    private void checkMessage()
-    {
-        Debug.Log("check message capabailities");
-    }
 
     private void Capture(Piece p)
     {
@@ -197,18 +184,17 @@ public class CheckersBoard : MonoBehaviour
         {
             for (int y = 0; y < 8; y++)
             {
-                //checks valid spaces 
-                if (pieces[x, y].whitePiece() && pieces[x, y] != null)
-                    white++;
-
-                if (!pieces[x, y].whitePiece() && pieces[x, y] != null)
-                    black++;
+                Piece possiblePiece = pieces[x, y];
+                if (possiblePiece != null)
+                {
+                    if (possiblePiece.whitePiece())
+                        white++;
+                    if (!possiblePiece.whitePiece())
+                        black++;
+                }
             }
         }
 
-        //should be able to check 'whiteWin' since endGame exists
-        //endGame is false by default; when called in TryMove, check for 'whiteWin' and 'endGame' conditions
-        //only matters if endGame is true
         if (white == 0)
         {
             whiteWin = false;
@@ -226,10 +212,11 @@ public class CheckersBoard : MonoBehaviour
     private void EndGame() {
        
         for (int i = 0; i < 8; i++) {
-                for (int j = 0; j < 8; j++) {
-                    Piece p = pieces[i, j];
+            for (int j = 0; j < 8; j++) {
+                Piece p = pieces[i, j];
+                if (p != null)
                     Destroy(p.gameObject);
-                }
+            }
         }
 
         if (whiteWin) 
