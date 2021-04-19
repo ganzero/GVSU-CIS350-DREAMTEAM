@@ -59,7 +59,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
        Debug.Log(mes);
        txtInfo.text=mes; 
        int randomRoomName = Random.Range(0,10000);
-       RoomOptions roomOps = new RoomOptions(){IsVisible=true,IsOpen=true,MaxPlayers=20}; //all of our players in the same room, if we want multiple rooms, make MaxPlayers to a small number
+       RoomOptions roomOps = new RoomOptions(){IsVisible=true,IsOpen=true,MaxPlayers=2}; //all of our players in the same room, if we want multiple rooms, make MaxPlayers to a small number
        PhotonNetwork.CreateRoom("Room"+randomRoomName,roomOps);
    }
 
