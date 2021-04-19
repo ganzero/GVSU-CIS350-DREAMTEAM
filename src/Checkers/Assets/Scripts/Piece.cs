@@ -9,7 +9,8 @@ public class Piece : MonoBehaviour
 
     public void isAKing(int x1, int y1)
     {
-        if (isWhite && ((x1 <= 8) && (y1 == 7))) {
+        if (isWhite && ((x1 <= 8) && (y1 == 7)))
+        {
             //board has to be empty and white piece has to be at other end
             isKing = true;
         }
@@ -18,6 +19,26 @@ public class Piece : MonoBehaviour
             //place has to be empty and black piece has to be at other end
             isKing = true;
         }
+    }
+
+    public bool whitePiece()
+    {
+        if (isWhite)
+            return true;
+        return false;
+    }
+
+    public bool checkKing(int x1, int y1)
+    {
+        if (isWhite && ((x1 <= 8) && (y1 == 7)))
+      
+            return true;
+        
+        else if (!isWhite && ((x1 <= 8) && (y1 == 0)))
+        
+            return true;
+        
+        return false;
     }
 
     public bool ValidMove(Piece[,] board, int x1, int y1, int x2, int y2)

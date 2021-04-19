@@ -12,8 +12,10 @@ public class CheckersBoard : MonoBehaviour
     public Vector3 boardOffset = new Vector3(-4.0f, 0, -4.0f);
     public Vector3 pieceOffset = new Vector3(0.5f, 0, 0.5f);
 
-    private bool isWhite;
-    private bool isWhiteTurn;
+    private bool isWhite = true;
+    private bool whiteTurn = true;
+    private bool whiteWin;
+
     private Piece selectedPiece;
 
     public Vector2 mouseOver;
@@ -29,16 +31,16 @@ public class CheckersBoard : MonoBehaviour
     {
         UpdateMouseOver();
         {
-            int x = (int) mouseOver.x;
-            int y = (int) mouseOver.y;
-            
-            if(selectedPiece != null)
+            int x = (int)mouseOver.x;
+            int y = (int)mouseOver.y;
+
+            if (selectedPiece != null)
                 UpdatePieceDrag(selectedPiece);
 
             if (Input.GetMouseButtonDown(0))
                 SelectPiece(x, y);
             if (Input.GetMouseButtonUp(0))
-                TryMove((int) startDrag.x, (int) startDrag.y, x, y);
+                TryMove((int)startDrag.x, (int)startDrag.y, x, y);
         }
     }
 
@@ -54,8 +56,8 @@ public class CheckersBoard : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f,
             LayerMask.GetMask("Board")))
         {
-            mouseOver.x = (int) (hit.point.x - boardOffset.x);
-            mouseOver.y = (int) (hit.point.z - boardOffset.z);
+            mouseOver.x = (int)(hit.point.x - boardOffset.x);
+            mouseOver.y = (int)(hit.point.z - boardOffset.z);
         }
         else
         {
@@ -79,18 +81,37 @@ public class CheckersBoard : MonoBehaviour
             p.transform.position = hit.point + Vector3.up;
         }
     }
-    
 
-private void SelectPiece(int x, int y)
+
+    private void SelectPiece(int x, int y)
     {
         if (x < 0 || x >= pieces.Length || y < 0 || y >= pieces.Length)
             return;
 
         Piece p = pieces[x, y];
+
         if (p != null)
         {
             selectedPiece = p;
             startDrag = mouseOver;
+        }
+    }
+
+    private void endTurn()
+    {
+        //default starts with whiteTurn being true
+
+
+        if (whiteTurn)
+        {
+            whiteTurn = false;
+            return;
+        }
+
+        if (!whiteTurn)
+        {
+            whiteTurn = true;
+            return;
         }
     }
 
@@ -104,43 +125,61 @@ private void SelectPiece(int x, int y)
         {
             if (selectedPiece != null)
                 MovePiece(selectedPiece, x1, y1);
-            
+
             startDrag = Vector2.zero;
             selectedPiece = null;
             return;
         }
 
+        //checks color of selected piece
+        isWhite = selectedPiece.whitePiece();
+
         if (selectedPiece != null)
         {
-            if (endDrag == startDrag)
+            if ((isWhite && whiteTurn) || (!isWhite && !whiteTurn))
             {
-                MovePiece(selectedPiece, x1, y1);
-               startDrag = Vector2.zero;
-               selectedPiece = null;
-               return;
-            }
-
-            if (selectedPiece.ValidMove(pieces, x1, y1, x2, y2))
-            {
-                if (Mathf.Abs(x2 - x1) == 2)
+                if (endDrag == startDrag)
                 {
-                    Piece p = pieces[(x1 + x2) / 2, (y1 + y2) / 2];
-                    if (p != null)
-                    {
-                        pieces[(x1 + x2) / 2, (y1 + y2) / 2] = null;
-                        Capture(p);
-                    }
+                    MovePiece(selectedPiece, x1, y1);
+                    startDrag = Vector2.zero;
+                    selectedPiece = null;
+                    return;
                 }
 
-                pieces[x2, y2] = selectedPiece;
-                pieces[x1, y1] = null;
-                MovePiece(selectedPiece, x2, y2);
+                if (selectedPiece.ValidMove(pieces, x1, y1, x2, y2))
+                {
+                    if (Mathf.Abs(x2 - x1) == 2)
+                    {
+                        Piece p = pieces[(x1 + x2) / 2, (y1 + y2) / 2];
+                        if (p != null)
+                        {
+                            pieces[(x1 + x2) / 2, (y1 + y2) / 2] = null;
+                            Capture(p);
+                        }
+                    }
+                    pieces[x2, y2] = selectedPiece;
+                    pieces[x1, y1] = null;
+                    MovePiece(selectedPiece, x2, y2);
 
-                EndTurn();
+
+                    endTurn();
+
+                    if (selectedPiece.checkKing(x2, y2))
+                        selectedPiece.transform.Rotate(Vector3.right * 180);
+
+
+                    VictoryCheck();
+                    checkMessage();
+                }
             }
         }
-
         MovePiece(selectedPiece, x2, y2);
+
+    }
+
+    private void checkMessage()
+    {
+        Debug.Log("check message capabailities");
     }
 
     private void Capture(Piece p)
@@ -148,20 +187,60 @@ private void SelectPiece(int x, int y)
         Destroy(p.gameObject);
     }
 
-    private void EndTurn()
-    {
-        selectedPiece = null;
-        startDrag = Vector2.zero;
-        isWhiteTurn = !isWhiteTurn;
-        VictoryCheck();
-    }
-
     private void VictoryCheck()
     {
-         
+        
+        int white = 0;
+        int black = 0;
+
+        for (int x = 0; x < 8; x ++)
+        {
+            for (int y = 0; y < 8; y++)
+            {
+                //checks valid spaces 
+                if (pieces[x, y].whitePiece() && pieces[x, y] != null)
+                    white++;
+
+                if (!pieces[x, y].whitePiece() && pieces[x, y] != null)
+                    black++;
+            }
+        }
+
+        //should be able to check 'whiteWin' since endGame exists
+        //endGame is false by default; when called in TryMove, check for 'whiteWin' and 'endGame' conditions
+        //only matters if endGame is true
+        if (white == 0)
+        {
+            whiteWin = false;
+            EndGame();
+        }
+
+        if (black == 0)
+        {
+            whiteWin = true;
+            EndGame();
+        }
+        
     }
 
-    
+    private void EndGame() {
+       
+        for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    Piece p = pieces[i, j];
+                    Destroy(p.gameObject);
+                }
+        }
+
+        if (whiteWin) 
+            Debug.Log("White won; game over");
+            
+        if (!whiteWin)
+            Debug.Log("Black won; game over");
+    }
+
+
+
 
     private void GenerateBoard()
     {
@@ -174,7 +253,7 @@ private void SelectPiece(int x, int y)
                 GeneratePiece((oddRow) ? x : x + 1, y);
             }
         }
-        
+
         //Place Black Pieces
         for (int y = 7; y > 4; y--)
         {
@@ -189,7 +268,7 @@ private void SelectPiece(int x, int y)
     private void GeneratePiece(int x, int y)
     {
         bool isPiece = (y > 3) ? false : true;
-        GameObject go = Instantiate((isPiece)?whitePiecePrefab:blackPiecePrefab) as GameObject;
+        GameObject go = Instantiate((isPiece) ? whitePiecePrefab : blackPiecePrefab) as GameObject;
         go.transform.SetParent(transform);
         Piece p = go.GetComponent<Piece>();
         pieces[x, y] = p;
@@ -200,5 +279,5 @@ private void SelectPiece(int x, int y)
     {
         p.transform.position = (Vector3.right * x) + (Vector3.forward * y) + boardOffset + pieceOffset;
     }
-    
+
 }
