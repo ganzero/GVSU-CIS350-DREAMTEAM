@@ -4,11 +4,11 @@ By April 2021, the Dream Team will have created a functioning Checkers game that
 
 ## Team Members and Roles
 
-* [Owen Ganzer](https://github.com/ganzero/CIS350-HW2-Ganzer) (Role 1, Role 2)
-* [Sarah Rockow](https://github.com/srockow2000/CIS350-HW2-Rockow.git)   (Role 3, Role 4)
-* [Jacob VanBronkhorst](https://github.com/jakevbk/CIS350-HW2-VanBronkhorst.git) (Role 5, Role 6)
-* [Jesse Leonard](https://github.com/jesselnrd/CIS350-HW2-Leonard) (Role 7, Role 8)
-* [Alexander Fang](https://github.com/alexanderjfang/CIS350-HW2-FANG) (Role 9, Role 10)
+* [Owen Ganzer](https://github.com/ganzero/CIS350-HW2-Ganzer) (Main Developer)
+* [Sarah Rockow](https://github.com/srockow2000/CIS350-HW2-Rockow.git)   (Function Implementation Specialist)
+* [Jacob VanBronkhorst](https://github.com/jakevbk/CIS350-HW2-VanBronkhorst.git) (Multiplayer Implementation Specialist)
+* [Jesse Leonard](https://github.com/jesselnrd/CIS350-HW2-Leonard) (Function Implementation Specialist)
+* [Alexander Fang](https://github.com/alexanderjfang/CIS350-HW2-FANG) (Main Tester)
 
 ## Prerequisites
 
