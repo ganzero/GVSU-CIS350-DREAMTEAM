@@ -106,7 +106,6 @@ public class CheckersBoard : MonoBehaviour
     {
         //default starts with whiteTurn being true
         whiteTurn = !whiteTurn;
-        isWhite = !isWhite;
     }
 
     private void TryMove(int x1, int y1, int x2, int y2)
