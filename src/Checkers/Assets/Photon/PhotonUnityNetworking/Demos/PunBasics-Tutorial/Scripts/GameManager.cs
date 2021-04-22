@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Launcher.cs" company="Exit Games GmbH">
 //   Part of: Photon Unity Networking Demos
 // </copyright>
@@ -54,7 +54,7 @@ namespace Photon.Pun.Demo.PunBasics
 			// in case we started this demo with the wrong scene being active, simply load the menu scene
 			if (!PhotonNetwork.IsConnected)
 			{
-				SceneManager.LoadScene("PunBasics-Launcher");
+				SceneManager.LoadScene("MultiplayerLobby");
 
 				return;
 			}
@@ -134,7 +134,7 @@ namespace Photon.Pun.Demo.PunBasics
 		/// </summary>
 		public override void OnLeftRoom()
 		{
-			SceneManager.LoadScene("PunBasics-Launcher");
+			SceneManager.LoadScene("MultiplayerLobby");
 		}
 
 		#endregion
@@ -164,7 +164,7 @@ namespace Photon.Pun.Demo.PunBasics
 
 			Debug.LogFormat( "PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount );
 
-			PhotonNetwork.LoadLevel("PunBasics-Room for "+PhotonNetwork.CurrentRoom.PlayerCount);
+			PhotonNetwork.LoadLevel("SampleScene");
 		}
 
 		#endregion

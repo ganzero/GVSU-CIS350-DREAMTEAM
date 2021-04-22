@@ -673,10 +673,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: c5a6869b-98d4-4203-aefc-69144af3e944
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Checkers
+  organizationId: jakevbk
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

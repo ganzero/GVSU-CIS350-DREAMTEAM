@@ -1,7 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using UnityEngine.UI;
 
 public class CheckersBoard : MonoBehaviour
 {
@@ -24,7 +28,9 @@ public class CheckersBoard : MonoBehaviour
 
     private void Start()
     {
-        GenerateBoard();
+        if(PhotonNetwork.CountOfPlayers >= 1){
+            GenerateBoard();
+        }
     }
 
     private void Update()
@@ -171,7 +177,7 @@ public class CheckersBoard : MonoBehaviour
 
     private void Capture(Piece p)
     {
-        Destroy(p.gameObject);
+        PhotonNetwork.Destroy(p.gameObject);
     }
 
     private void VictoryCheck()
@@ -215,7 +221,7 @@ public class CheckersBoard : MonoBehaviour
             for (int j = 0; j < 8; j++) {
                 Piece p = pieces[i, j];
                 if (p != null)
-                    Destroy(p.gameObject);
+                    PhotonNetwork.Destroy(p.gameObject);
             }
         }
 
@@ -232,6 +238,7 @@ public class CheckersBoard : MonoBehaviour
     private void GenerateBoard()
     {
         //Place White Pieces
+        if (PhotonNetwork.IsMasterClient){
         for (int y = 0; y < 3; y++)
         {
             bool oddRow = (y % 2 == 0);
@@ -240,8 +247,10 @@ public class CheckersBoard : MonoBehaviour
                 GeneratePiece((oddRow) ? x : x + 1, y);
             }
         }
+        }
 
         //Place Black Pieces
+        if (!PhotonNetwork.IsMasterClient){
         for (int y = 7; y > 4; y--)
         {
             bool oddRow = (y % 2 == 0);
@@ -250,16 +259,29 @@ public class CheckersBoard : MonoBehaviour
                 GeneratePiece((oddRow) ? x : x + 1, y);
             }
         }
+        }
     }
 
     private void GeneratePiece(int x, int y)
     {
         bool isPiece = (y > 3) ? false : true;
-        GameObject go = Instantiate((isPiece) ? whitePiecePrefab : blackPiecePrefab) as GameObject;
+       // GameObject go = Instantiate((isPiece) ? whitePiecePrefab : blackPiecePrefab) as GameObject;
+        if (PhotonNetwork.IsMasterClient){
+        GameObject go = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "whitePiece") ,pieceOffset, Quaternion.identity);
         go.transform.SetParent(transform);
         Piece p = go.GetComponent<Piece>();
+        p.transform.Rotate(Vector3.right * 270);
         pieces[x, y] = p;
         MovePiece(p, x, y);
+        }
+        else{
+            GameObject go = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "blackPiece") ,pieceOffset, Quaternion.identity); 
+            go.transform.SetParent(transform);
+            Piece p = go.GetComponent<Piece>();
+            p.transform.Rotate(Vector3.right * 270);
+            pieces[x, y] = p;
+            MovePiece(p, x, y);
+        }
     }
 
     private void MovePiece(Piece p, int x, int y)
