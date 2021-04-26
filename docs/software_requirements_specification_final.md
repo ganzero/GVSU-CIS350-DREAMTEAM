@@ -38,7 +38,7 @@ The following requirements describe how the software should be implemented, main
 | FR13 |  If a piece has been kinged, the piece shall be allowed to move diagonally in any direction. |
 | FR14 |  The pieces shall only move onto empty squares. |
 | FR15 |  The pieces shall be allowed to jump over and capture enemy pieces if there is an empty square directly behind the enemy piece forming a diagonal line. |
-
+| … | … |
  
 ## Non-Functional Requirements
  
