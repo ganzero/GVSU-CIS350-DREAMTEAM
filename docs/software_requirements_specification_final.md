@@ -8,72 +8,72 @@ The following requirements describe how the software should be implemented, main
 ## Functional Requirements
  
 ###  Piece 
-| ID  | Requirement     |
-| :-------------: | :----------: |
-| FR1 |  There shall be 12 white, round checker pieces and 12 black, round checker pieces with identical designs. |
-| FR2 |  The game pieces selected by the players shall be highlighted when selected to show the  users their currently selected pieces. |
-| FR3 |  After a piece has reached the opposite side of the board relative to their starting position, the piece shall be “kinged” and a crown shall be displayed on the piece as a symbol.  |
-| FR4 |  The pieces shall not overlap the squares on the grid.  |
-| FR5 |  The pieces shall not be altered after initial creation.  |
+| ID  | Requirement     | Test Cases |
+| :-------------: | :----------: | :----------: |
+| FR1 |  There shall be 12 white, round checker pieces and 12 black, round checker pieces with identical designs. | TC5 |
+| FR2 |  The game pieces selected by the players shall be highlighted when selected to show the  users their currently selected pieces. | TBD |
+| FR3 |  After a piece has reached the opposite side of the board relative to their starting position, the piece shall be “kinged” and a crown shall be displayed on the piece as a symbol.  | TC3 |
+| FR4 |  The pieces shall not overlap the squares on the grid.  | TBD |
+| FR5 |  The pieces shall not be altered after initial creation.  | TBD |
 | … | … |
 
 
 ###  Board 
  
-| ID  | Requirement     |
-| :-------------: | :----------: |
-| FR6 |  The checkerboard shall be 2-dimensional. |
-| FR7 |  The pieces shall be 3-dimensional. |
-| FR8 |  The checkerboard shall be composed of an 8x8 grid composed of squares. |
-| FR9 |  The squares in the grid shall be larger than one checkers piece, but not larger than two. |
-| FR10 |  The checkerboard shall not be altered after initial creation.|
+| ID  | Requirement     | Test Cases |
+| :-------------: | :----------: | :----------: |
+| FR6 |  The checkerboard shall be 2-dimensional. | TBD |
+| FR7 |  The pieces shall be 3-dimensional. | TBD |
+| FR8 |  The checkerboard shall be composed of an 8x8 grid composed of squares. | TBD |
+| FR9 |  The squares in the grid shall be larger than one checkers piece, but not larger than two. | TBD |
+| FR10 |  The checkerboard shall not be altered after initial creation.| TBD |
 | … | … |
 
 ###  Movements 
  
-| ID  | Requirement|
-| :-------------: | :----------: |
-| FR11 |  The system shall only allow diagonal movement of pieces. |
-| FR12 |  The pieces shall be allowed to move forward diagonally one square initially until they reach a square on the opposite side of the board relative to their initial starting point. |
-| FR13 |  If a piece has been kinged, the piece shall be allowed to move diagonally in any direction. |
-| FR14 |  The pieces shall only move onto empty squares. |
-| FR15 |  The pieces shall be allowed to jump over and capture enemy pieces if there is an empty square directly behind the enemy piece forming a diagonal line. |
+| ID  | Requirement | Test Cases |
+| :-------------: | :----------: | :----------: |
+| FR11 |  The system shall only allow diagonal movement of pieces. | TBD |
+| FR12 |  The pieces shall be allowed to move forward diagonally one square initially until they reach a square on the opposite side of the board relative to their initial starting point. | TC1 |
+| FR13 |  If a piece has been kinged, the piece shall be allowed to move diagonally in any direction. | TC4 |
+| FR14 |  The pieces shall only move onto empty squares. | TBD |
+| FR15 |  The pieces shall be allowed to jump over and capture enemy pieces if there is an empty square directly behind the enemy piece forming a diagonal line. | TC2 |
 | … | … |
  
 ## Non-Functional Requirements
  
 ###  Game Play 
  
-| ID  | Requirement     |
-| :-------------: | :----------: |
-| NFR1 |  The system shall only allow each player to interact with their own pieces. |
-| NFR2 |  A user shall be able to easily select pieces; however, once a piece is moved, the action cannot be undone. |
-| NFR3 |  Pieces shall be destroyed after being captured. |
-| NFR4 |  Players shall choose whether or not to capture or ignore an opponent’s piece if they can capture it. |
-| NFR5 |  Players shall be given an extra turn after capturing an enemy piece. |
+| ID  | Requirement     | Test Cases |
+| :-------------: | :----------: | :----------: |
+| NFR1 |  The system shall only allow each player to interact with their own pieces. | TBD |
+| NFR2 |  A user shall be able to easily select pieces; however, once a piece is moved, the action cannot be undone. | TBD |
+| NFR3 |  Pieces shall be destroyed after being captured. | TBD |
+| NFR4 |  Players shall choose whether or not to capture or ignore an opponent’s piece if they can capture it. | TBD |
+| NFR5 |  Players shall be given an extra turn after capturing an enemy piece. | TBD |
 | … | … |
 
 ###  System Features 
  
-| ID  | Requirement     |
-| :-------------: | :----------: |
-| NFR6 |  A player shall be able to move immediately after the previous player. |
-| NFR7 |  The game application shall not crash nor shall it crash the device it is installed to when opened by the user. |
-| NFR8 |  The application shall load on both mobile and desktop. |
-| NFR9 |  The game shall be available for both Apple and Android mobile devices.  |
-| NFR10 |  Upon victory, the game shall reset the board, allowing players to continue until they desire to exit the game.|
+| ID  | Requirement     | Test Cases |
+| :-------------: | :----------: | :----------: |
+| NFR6 |  A player shall be able to move immediately after the previous player. | TC10 |
+| NFR7 |  The game application shall not crash nor shall it crash the device it is installed to when opened by the user. | TC9 |
+| NFR8 |  The application shall load on both mobile and desktop. | TC8 |
+| NFR9 |  The game shall be available for both Apple and Android mobile devices.| TBD |
+| NFR10 |  Upon victory, the game shall reset the board, allowing players to continue until they desire to exit the game.| TC6, TC7 |
 | … | … |
 
 
 ###  Multiplayer 
  
-| ID  | Requirement     |
-| :-------------: | :----------: |
-| NFR11 |  Only two players shall be allowed to play the same game at the same time.  |
-| NFR12 |  The players shall enter their names in the lobby.  |
-| NFR13 |  The game shall not begin until there are two players. |
-| NFR14 |  The application shall require the use of Photon.  |
-| NFR15 |  The players shall have the option of joining a room and leaving a room.  |
+| ID  | Requirement     | Test Cases |
+| :-------------: | :----------: | :----------: |
+| NFR11 |  One to two players shall be allowed to play the same game at the same time.  | TBD |
+| NFR12 |  The players shall enter their names in the lobby.  | TBD |
+| NFR13 |  The game shall begin with a minimum of one player and a maximum of two players. | TBD |
+| NFR14 |  The application shall require the use of Photon.  | TBD |
+| NFR15 |  The players shall have the option of joining a room and leaving a room.  | TBD |
 | … | … |
 
 # Software Artifacts
