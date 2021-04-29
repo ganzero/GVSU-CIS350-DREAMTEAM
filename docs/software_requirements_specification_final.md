@@ -85,10 +85,10 @@ The following includes links to diagrams, use cases, and timelines used in creat
 * [King use case](https://github.com/ganzero/GVSU-CIS350-DREAMTEAM/blob/master/artifacts/use_case_diagrams/Crown.md) 
 * [Timeline](https://github.com/ganzero/GVSU-CIS350-DREAMTEAM/blob/master/docs/Gantt_Chart.pdf) 
  
-# Test Specification (if added)
+# Test Specification
  
-<Description of what this section is>
- 
+Test Cases for Checkers
+
 ## Unit tests
   
 | ID  | Description | Steps | Input Values | Expected Output | Actual Output | Pass/Fail | Requirement Link |
