@@ -52,7 +52,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
        string msgMatchFound="Match found, starting a game (VS)";
        txtInfo.text=msgMatchFound;
        Debug.Log(msgMatchFound);
-       PhotonNetwork.LoadLevel(multiplayScene);
+       PhotonNetwork.LoadLevel("SampleScene");
     }
    
 }
